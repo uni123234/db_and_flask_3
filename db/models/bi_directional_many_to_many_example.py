@@ -1,8 +1,14 @@
-from . import Base
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import ForeignKey, Table, Column
-from typing import List
+"""
+This module defines SQLAlchemy models for a bidirectional many-to-many relationship
+between Parent and Child entities.
+"""
 
+from typing import List
+from sqlalchemy import ForeignKey, Table, Column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from . import Base
+
+# Association table for the many-to-many relationship
 association_table = Table(
     "association_table",
     Base.metadata,
@@ -10,7 +16,12 @@ association_table = Table(
     Column("right_id", ForeignKey("right_table.id"), primary_key=True),
 )
 
+
 class Parent(Base):
+    """
+    Represents a parent entity that can be associated with multiple Child entities.
+    """
+
     __tablename__ = "left_table"
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -18,7 +29,12 @@ class Parent(Base):
         "Child", secondary=association_table, back_populates="parents"
     )
 
+
 class Child(Base):
+    """
+    Represents a child entity that can be associated with multiple Parent entities.
+    """
+
     __tablename__ = "right_table"
 
     id: Mapped[int] = mapped_column(primary_key=True)

@@ -1,0 +1,39 @@
+# Byte-compiled files
+*__pycache__/*
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+*venv*
+*.vevn*
+.env/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Environment variables file
+.env
+
+# Pytest cache
+.cache/
+
+# Flask instance folder
+instance/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+*.db*
+*.sql*
